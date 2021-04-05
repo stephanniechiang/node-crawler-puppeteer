@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scraper
+  labels:
+    app: scraper
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: scraper
+  template:
+    metadata:
+      labels:
+        app: scraper
+    spec:
+      containers:
+      - name: fliper-crawler
+        image: stephchiang/fliper-crawler
+        ports:
+        - containerPort: 5000
